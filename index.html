@@ -1,0 +1,68 @@
+<STYLE type="text/css">
+tr#mytr {font-style: italic; color: white}
+th#myth {font-style: bold; color: red; background-color: lightblue}
+</STYLE>
+</HEAD>
+<body>
+<h2>Conversion de Temperatura</h2>
+<p id="demo"></p>
+<script>
+function fahrenheit(c)
+{ 
+var f = 9/5*c + 32;
+return Math.round(f);
+}
+function kelvin(c)
+{
+var k = c + 273.15;
+return Math.round(k);
+}
+function rankine(c)
+{ 
+var ra = 9/5*c + 491.67;
+return Math.round(ra);
+}
+function reaumur(c)
+{ 
+var re = 4/5*c;
+return Math.round(re);
+}
+function state(c)
+{
+if(c < 17)
+{
+return "<img src='https://d1u5p3l4wpay3k.cloudfront.net/minecraft_g…/…/Ice.png'>"
+}
+else if (c==17)
+{
+return "<img src='http://images.clipartpanda.com/melting-clipart-yTozro4TE.png'>"
+}
+else if (c>17 && c<107)
+{
+return "<img src='http://www.pngall.com/…/uploa…/2016/03/Water-PNG-Clipart.png'>"
+}
+else if (c==107)
+{
+return "<img src='http://weclipart.com/gimg/08FA136193DC7029/8i6odEnKT.jpg'>"
+}
+else if (c>107)
+{
+return "<img src='http://www.pngall.com/wp-conte…/uploads/…/03/Cloud-PNG-5.png'>"
+}
+}
+var temp = ["Celsius", "Fahrenheit", "Kelvin", "Rankine", "Reaumur", "Estado del Agua"];
+var text = "<table border = 1 >";
+var i, c;
+for (i = 0; i < temp.length; i++){
+text += "<th id=myth>" + temp[i] + "</th>";
+}
+for(c=-273; c<=200; c += 10)
+{ if(c==0 || c== 100)
+text += "<tr id=mytr bgcolor=green ><td>" + c + "</td><td>" +fahrenheit(c)+"</td><td>"+kelvin(c)+"</td><td>"+rankine(c)+"</td><td>"+reaumur(c)+"</td></tr>";
+else
+text += "<tr><td>" + c + "</td><td>" +fahrenheit(c)+"</td><td>"+kelvin(c)+"</td><td>"+rankine(c)+"</td><td>"+reaumur(c)+"</td><td>"+state(c)+"</td></tr>";
+}
+document.getElementById("demo").innerHTML = text + "</tables>";
+</script>
+</body>
+</html>
